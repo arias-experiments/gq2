@@ -27,7 +27,8 @@ const port = 8001;
 mongoose.Promise = global.Promise;
 
 //connecting to the database
-mongoose.connect(dbConfig.url, {useNewUrlParser: true})
+// mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true})
+mongoose.connect(dbConfig.url, {useUnifiedTopology: true, useNewUrlParser: true})
 	.then( function ConnectionHandler(){
 		console.log("Connection successful");
 	}).catch(function ExceptionHandler(err){

@@ -1,7 +1,7 @@
 
 const MongoClient = require('mongodb').MongoClient;
 
-const url = 'mongodb://map:world@node10897-gq-alpha2.us.reclaim.cloud';
+const url = 'mongodb://map:world@node10897-gq-alpha2.us.reclaim.cloud/geoquiz';
 const dbName = "geoquiz";
 var bcrypt = require('bcrypt');
 var data = require('./data/countryDatabase.json');
@@ -10,7 +10,7 @@ var userData = require('./data/userDatabase.json')
 
 
 
-MongoClient.connect(url, async function DBConnectHandler(err, client){
+MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, async function DBConnectHandler(err, client){
 	if (err){
 		console.log("Error Connecting");
 		console.log(err);
