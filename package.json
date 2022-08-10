@@ -18,15 +18,15 @@
   },
   "homepage": "https://github.com/SionPark126/csProject#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "compression": "^1.7.4",
     "dotenv": "^7.0.0",
-    "ejs": "^2.6.1",
+    "ejs": "^3.1.8",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "formidable": "^1.2.1",
     "mongo": "^0.1.0",
-    "mongoose": "^5.4.20",
+    "mongoose": "^6.5.2",
     "request": "^2.88.0"
   }
 }
