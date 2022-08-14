@@ -1,16 +1,14 @@
-
 const MongoClient = require('mongodb').MongoClient;
 
-const url = 'mongodb://map:world@node10897-gq-alpha2.us.reclaim.cloud/geoquiz';
-const dbName = "geoquiz";
+// Sending DB Configuration to database.js
+const db = require('./database');
+const dbName = db.database;
+
 var bcrypt = require('bcrypt');
 var data = require('./data/countryDatabase.json');
 var userData = require('./data/userDatabase.json')
-// var User = require('./models/user.model.js');
 
-
-
-MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, async function DBConnectHandler(err, client){
+MongoClient.connect(db.connectionString(), {useUnifiedTopology: true, useNewUrlParser: true}, async function DBConnectHandler(err, client){
 	if (err){
 		console.log("Error Connecting");
 		console.log(err);
@@ -60,12 +58,3 @@ db.countries.find({ "properties.continent" : "africa"})
 
 
 ***********/
-
-
-/*
-console.log(data["features"]);
-
-var countriesFeatures = data["features"];
-for (var i in countriesFeatures)
-    console.log(countriesFeatures[i]["properties"]["name"]);
-*/

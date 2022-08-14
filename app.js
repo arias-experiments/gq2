@@ -3,10 +3,6 @@ const bodyParser =   require('body-parser');
 const app        =   express();
 const session  	 =   require('express-session')
 const path       =   require('path');
-//configuring the database
-const dbConfig   =   { url: 'mongodb://map:world@node10897-gq-alpha2.us.reclaim.cloud/geoquiz'};
-//const dbConfig = {url: 'mongodb://localhost:27017/geoquiz'};
-const mongoose   =   require('mongoose');
 const compression=   require('compression')
 // const https			 =	 require('https');
 // const pm2   = require('pm2');
@@ -24,11 +20,20 @@ const port = 8001;
 // var credentials = {key: privateKey, cert: certificate};
 // *****************************************************************************
 
+// *****************************************************************************
+// Sending DB Configuration to database.js
+//const dbConfig   =   { url: 'mongodb://map:world@node10897-gq-alpha2.us.reclaim.cloud/geoquiz'};
+//const dbConfig = {url: 'mongodb://localhost:27017/geoquiz'};
+var db = require('./database');
+
+//configuring the database
+
+const mongoose   =   require('mongoose');
+
 mongoose.Promise = global.Promise;
 
 //connecting to the database
-// mongoose.connect(url, {useUnifiedTopology: true, useNewUrlParser: true})
-mongoose.connect(dbConfig.url, {useUnifiedTopology: true, useNewUrlParser: true})
+mongoose.connect(db.connectionString(), {useUnifiedTopology: true, useNewUrlParser: true})
 	.then( function ConnectionHandler(){
 		console.log("Connection successful");
 	}).catch(function ExceptionHandler(err){
@@ -37,7 +42,14 @@ mongoose.connect(dbConfig.url, {useUnifiedTopology: true, useNewUrlParser: true}
 		process.exit();
 	});
 
-app.use(express.static(__dirname + '/views'));
+
+//app.use(express.static(__dirname + '/views'));
+//serve static files in a folder and cache six months
+app.use('/', express.static(path.join(__dirname,'views'),{
+				maxAge: 2592000*2, //about a month *2
+				etag: false
+}));
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -97,11 +109,6 @@ app.get('/favicon.ico' , function(req , res){
 // });
 
 
-//serve static files in a folder and cache six months
-// app.use('/', express.static(path.join(__dirname,'views'),{
-// 				maxAge: 2592000*2, //about a month *2
-// 				etag: false
-// 			}));
 
 app.use('/', router);
 
