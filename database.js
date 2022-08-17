@@ -2,7 +2,7 @@
 const dbConfig = {
     user : 'gq-user',
     pass : 'worldmap',
-    url  : 'node10934-gq-gamma1.us.reclaim.cloud',
+    url  : 'node10954-gq-gamma2.us.reclaim.cloud',
     // Use the url below to test locally
     //url  : 'localhost',
     database : 'geoquiz',

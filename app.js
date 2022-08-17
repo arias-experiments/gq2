@@ -50,6 +50,7 @@ app.use('/', express.static(path.join(__dirname,'views'),{
 				etag: false
 }));
 
+app.enable('trust proxy'); // << ------- From GeoQuiz functioning version
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
