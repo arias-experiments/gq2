@@ -1,3 +1,8 @@
+/*
+use geoquiz
+db.createUser({user: "gq-user", pwd: "worldmap", roles: [{role: "readWrite", db: "geoquiz"}]})
+*/
+
 const MongoClient = require('mongodb').MongoClient;
 
 // Sending DB Configuration to database.js
