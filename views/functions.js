@@ -48,8 +48,11 @@ switch(continent){
   break;
 }
 
-// var urlforCountries = "https://" + window.location.host + "/quiz/" + continent;
- var urlforCountries = "http://"+ window.location.host + "/quiz/" + continent;
+// This URL needs to be https to direct to a secure location, if left http then there would be an
+// "blocked loading mixed active content" error on the client side
+// see: https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content
+var urlforCountries = "https://" + window.location.host + "/quiz/" + continent;
+ //var urlforCountries = "http://"+ window.location.host + "/quiz/" + continent;
 
 console.log("entered")
 console.log(urlforCountries);
