@@ -8,7 +8,6 @@ const path = require('path');
 // token = process.env.TOKEN
 //******************************
 
-token = "AIS5ISLEsFMSZPrSUGQJjX7Kh3aguaEdWnM3oCJf2XFzpmIB4VW8GRstm4QxF8uZ";
 
 const countries = require('../controllers/country.controller.js');
 const users = require('../controllers/user.controller.js')
